@@ -1,0 +1,12 @@
+{
+  "irfandar767@gmail.com": {
+    "name": "irfan",
+    "pw": "$2a$11$Z80nP6OAaJuvSi5hOqdRKeIjJO7PWTInT5xFf5RY4cr3PzHrAN6HS",
+    "ok": true
+  },
+  "devtest@example.com": {
+    "name": "Test User",
+    "pw": "$2a$11$8doN1qBPXiiQCtQdJFIc5.A/1q1LcrjkBMFYr6jy8o7pJk0Fa1reO",
+    "ok": true
+  }
+}
