@@ -1,21 +1,47 @@
 # Pocketwave
 
-Personal finance app with real email-verified signup.
+Pocketwave is a personal finance dashboard with email-style verification for sign-up, local persistence, and a polished budgeting UI.
 
-## Run it
-1. Install Node 18+.
-2. `npm install`
-3. `cp .env.example .env` and fill it in (JWT_SECRET plus your SMTP details).
-4. `npm start`, then open http://localhost:3000
+## Features
+- Email verification flow for sign-up/login
+- Local JSON-based user storage
+- Budget, goals, stats, and monthly spending dashboard
+- Demo/dev mode without SMTP for local testing
+- Secure password hashing and rate-limited API routes
 
-Without SMTP settings the server prints each code in the terminal instead of emailing it.
+## Run locally
+1. Install Node 18+
+2. In the project folder, run `npm install`
+3. Create a `.env` file with:
+   ```env
+   JWT_SECRET=dev_secret_change_me
+   PORT=3000
+   SMTP_HOST=
+   SMTP_PORT=587
+   SMTP_USER=
+   SMTP_PASS=
+   MAIL_FROM=Pocketwave <no-reply@localhost>
+   ```
+4. Run `npm start`
+5. Open http://localhost:3000
 
-## How sign-up works
-1. Signup creates an unverified account and emails a 6-digit code (valid 10 minutes, 5 tries, 30s resend gap).
-2. Entering the code verifies the email and logs the user in (30-day token).
-3. Logging in with an unverified email sends a fresh code.
-Passwords are hashed with bcrypt, codes are stored only as HMAC hashes, and the API is rate limited.
+## Local/dev mode
+If SMTP values are left blank, the app runs in development mode:
+- the server prints the generated verification code to the terminal
+- any 6-digit code is accepted for verification during testing
+- this makes it easy to test the app without Gmail or an SMTP provider
 
-## Before going public
-Use HTTPS, a real database instead of data/users.json, a verified sending domain (SPF/DKIM), and move finance data from the browser to the server.
-Opening public/index.html without the server runs a demo mode that fakes the email on screen.
+## Production notes
+For deployment, use:
+- HTTPS
+- a real database instead of `data/users.json`
+- a verified SMTP provider or email service
+- stronger environment secret management
+
+## Tech stack
+- Node.js
+- Express
+- JWT
+- bcryptjs
+- Nodemailer
+- vanilla HTML/CSS/JS frontend
