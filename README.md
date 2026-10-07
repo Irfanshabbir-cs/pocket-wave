@@ -1,18 +1,30 @@
 # Pocketwave
 
-Pocketwave is a personal finance dashboard with email-style verification for sign-up, local persistence, and a polished budgeting UI.
+Pocketwave is a personal finance dashboard with a sleek budgeting interface, goal tracking, and secure sign-up verification.
+
+## Overview
+Track spending, plan monthly budgets, monitor progress toward goals, and review your financial habits from one clean dashboard.
 
 ## Features
-- Email verification flow for sign-up/login
-- Local JSON-based user storage
-- Budget, goals, stats, and monthly spending dashboard
-- Demo/dev mode without SMTP for local testing
-- Secure password hashing and rate-limited API routes
+- Sign-up and login flow with verification code handling
+- Local JSON-based user storage for easy testing
+- Monthly budgets, goal tracking, and analytics panels
+- Transaction entry sheet with income and expense tracking
+- Dev mode that works without SMTP so you can test locally
+- Rate-limited backend endpoints and password hashing
+
+## Demo
+Open the app locally and test the full flow:
+- create a new account
+- enter a 6-digit verification code
+- log in to the dashboard
+- create expenses/income entries
 
 ## Run locally
 1. Install Node 18+
-2. In the project folder, run `npm install`
-3. Create a `.env` file with:
+2. Open the project folder
+3. Run `npm install`
+4. Create a `.env` file with:
    ```env
    JWT_SECRET=dev_secret_change_me
    PORT=3000
@@ -22,21 +34,21 @@ Pocketwave is a personal finance dashboard with email-style verification for sig
    SMTP_PASS=
    MAIL_FROM=Pocketwave <no-reply@localhost>
    ```
-4. Run `npm start`
-5. Open http://localhost:3000
+5. Run `npm start`
+6. Open http://localhost:3000
 
 ## Local/dev mode
-If SMTP values are left blank, the app runs in development mode:
-- the server prints the generated verification code to the terminal
-- any 6-digit code is accepted for verification during testing
-- this makes it easy to test the app without Gmail or an SMTP provider
+If SMTP is left blank, Pocketwave runs in local development mode:
+- the verification code prints in the terminal
+- any 6-digit code is accepted for testing
+- this is useful while building or demoing without Gmail/SMTP
 
-## Production notes
-For deployment, use:
+## Production deployment
+Before shipping publicly, use:
 - HTTPS
 - a real database instead of `data/users.json`
-- a verified SMTP provider or email service
-- stronger environment secret management
+- secure environment variables
+- a verified email provider for real verification emails
 
 ## Tech stack
 - Node.js
@@ -44,4 +56,10 @@ For deployment, use:
 - JWT
 - bcryptjs
 - Nodemailer
-- vanilla HTML/CSS/JS frontend
+- HTML, CSS, and JavaScript
+
+## License
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
+## Screenshots
+See [screenshots.md](screenshots.md) for screenshot placeholders and recommended image names.
